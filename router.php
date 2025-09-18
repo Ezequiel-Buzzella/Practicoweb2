@@ -1,23 +1,31 @@
 <?php
+require_once "index.php";
 
-if(!isset($_GET['action'])){
+
+
+
+if (!empty($_GET['action'])) {
     $action = $_GET['action'];
-}else{
+} else {
+
     $action = 'home';
 }
 
-$params = explode('/',$action);
-
-
+$params = explode('/', $action);
 
 switch ($params[0]) {
     case 'home':
-        # code...
+        showHome();
         break;
 
     case 'showItems':
         break;
-    
+
+    case 'showCategories':
+        showCategorie();
+        break;
+
+
     default:
         echo 'Error not found';
         break;
