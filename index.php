@@ -23,7 +23,7 @@ function showCategorie()
   <tbody>';
     foreach ($categories as $c) {
         echo '    <tr>
-      <th scope="row">1</th>
+      <th scope="row">'.$c->ide_categoria.'</th>
       <td>'.$c->nombre_categoria.'</td>
       <td>'.$c->descripcion_categoria.'</td>
       <td><a href="#">Ver mas</a></td>
