@@ -4,4 +4,3 @@
 <h2>Tematica</h2>
 <p>El siguiente proyecto tiene como ojetivo realizar un catalogo de productos que pueden encontrarse dentro de un
 comercio(almacen).Los productos podran ser encontrados de manera individual o dentro de las mismas categorias.</p>
-<img src="img/db-2025-09-18_08-24.xcf">
