@@ -4,10 +4,11 @@ require_once "./BaseModel.php";
 
 class CategoryModel extends BaseModel
 {
-  private $db;
 
-  function __construct()
-  {
-    $this->db = new BaseModel();
+  function showAll(){
+    $query = $this->db->prepare('SELECT * FROM categoria');
+    $query->execute();
+    $categories = $query->fetchAll(PDO::FETCH_OBJ);
+    return $categories;
   }
 }
