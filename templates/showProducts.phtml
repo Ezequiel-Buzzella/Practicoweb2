@@ -1,0 +1,45 @@
+<?php require_once 'header.phtml' ?>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Descripcion del producto</th>
+            <th scope="col">Precio del producto</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($product as $p): ?>
+            <tr>
+                <th scope="row"><?php echo $p->id_producto ?></th>
+                <td><?php echo $p->nombre_producto ?></td>
+                <td><?php echo $p->descripcion_producto ?></td>
+                <td><?php echo $p->precio_producto ?></td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+<form action="insertProduct" method="post">
+    <label for="">Nombre del producto</label>
+    <input type="text" name="nombre_producto" required>
+
+    <label for="">Descripción del producto</label>
+    <input type="text" name="descripcion_producto" required>
+
+    <label for="">Precio del producto</label>
+    <input type="text" name="precio_producto" required>
+
+    <label for="">Categoría</label>
+    <select name="fk_id_categoria" required>
+        <option value="">Seleccione una categoría</option>
+        <?php foreach ($category as $c): ?>
+            <option value="<?= $c->id_categoria ?>"><?= $c->nombre_categoria ?></option>
+        <?php endforeach ?>
+    </select>
+
+    <button type="submit">Agregar producto</button>
+</form>
+
+<?php require_once 'footer.phtml' ?>

@@ -5,6 +5,7 @@
         <th scope="col">Id</th>
         <th scope="col">Nombre de la categoria</th>
         <th scope="col">Descripcion de la categoria</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
       <th scope="row"><?php echo $c->id_categoria?></th>
       <td><?php echo $c->nombre_categoria ?></td>
       <td><?php echo $c->descripcion_categoria ?></td>
+      <td><a href="showProductsByCatgory/<?php echo $c->id_categoria?>">click para ver mas</a>
     </tr>
     <?php endforeach?>
   </tbody>

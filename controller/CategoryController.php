@@ -11,6 +11,10 @@ class CategoryController
         $this->model = new CategoryModel();
     }
 
+    function getCategories(){
+        return $this->model->showAll();
+    }
+
     function showCategories(){
         $categories = $this->model->showAll();
         $this->view->showCategories($categories);

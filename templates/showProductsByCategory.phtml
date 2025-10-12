@@ -1,0 +1,25 @@
+<?php require_once 'header.phtml' ?>
+
+<h2>Productos de la categoría</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID Producto</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($products as $p): ?>
+      <tr>
+        <td><?= $p->id_producto ?></td>
+        <td><?= $p->nombre_producto ?></td>
+        <td><?= $p->descripcion_producto ?></td>
+        <td><?= $p->precio_producto ?></td>
+      </tr>
+    <?php endforeach ?>
+  </tbody>
+</table>
+
+<?php require_once 'footer.phtml' ?>
