@@ -60,8 +60,11 @@ switch ($params[0]) {
     $productController->updateProduct();
     break;
 
+  case 'editCategory':
+    $categoryController->editCategory($params[1]);
+    break;
   case 'updateCategory':
-
+    $categoryController->updateCategory();
     break;
 
   default:

@@ -11,6 +11,12 @@ class CategoryModel extends BaseModel
     $categories = $query->fetchAll(PDO::FETCH_OBJ);
     return $categories;
   }
+  function getById($id_categoria){
+    $query = $this->db->prepare('SELECT * FROM categoria WHERE id_categoria = ?');
+    $query->execute([$id_categoria]);
+    $id_category = $query->fetch(PDO::FETCH_OBJ);
+    return $id_category;
+  }
 
   function insertCategory($nombre_categoria,$descripcion_categoria){
     $query = $this->db->prepare('INSERT INTO categoria(nombre_categoria,descripcion_categoria)
@@ -19,7 +25,10 @@ class CategoryModel extends BaseModel
 
   }
 
-  function updateCategory($id_categoria){
+  function updateCategory($id_categoria,$nombre_categoria,$descripcion_categoria){
+    $query = $this->db->prepare('UPDATE categoria SET nombre_categoria = ?,descripcion_categoria = ?
+    WHERE id_categoria = ? ');
+    $query->execute([$nombre_categoria,$descripcion_categoria,$id_categoria]);
 
   }
 

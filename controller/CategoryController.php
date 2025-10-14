@@ -34,4 +34,17 @@ class CategoryController
         $this->model->deleteCategory($id_categoria);
         header("Location: " . BASE_URL . "showCategories");
     }
+    function editCategory($id_categoria){
+        $category = $this->model->getById($id_categoria);
+        $this->view->editCategory($category);
+    }
+    function updateCategory(){
+        $id_category = $_POST['id_categoria'];
+        $category_name = $_POST['nombre_categoria'];
+        $category_description = $_POST['descripcion_categoria'];
+        $this->model->updateCategory($id_category,$category_name,$category_description);
+        header('Location: ' . BASE_URL . 'showCategories');
+
+
+    }
 }

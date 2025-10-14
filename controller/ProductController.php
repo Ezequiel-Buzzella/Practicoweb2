@@ -3,7 +3,6 @@ require_once './model/ProductModel.php';
 require_once './view/ProductView.php';
 require_once './view/index.php';
 
-define('MAX_PRIOTRIY', 5);
 class ProductController
 {
     private $model;

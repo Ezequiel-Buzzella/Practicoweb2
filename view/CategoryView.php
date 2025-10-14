@@ -7,4 +7,10 @@ class CategoryView {
         require_once './templates/showCategories.phtml';
     }
 
+    function editCategory($categories){
+        $category = $categories;
+        require_once './templates/editCategory.phtml';
+
+    }
+
 }

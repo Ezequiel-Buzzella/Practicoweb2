@@ -1,31 +1,33 @@
 <?php require_once 'header.phtml' ?>
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre de la categoria</th>
-        <th scope="col">Descripcion de la categoria</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($category as $c):?>
+  <thead>
     <tr>
-      <th scope="row"><?php echo $c->id_categoria?></th>
-      <td><?php echo $c->nombre_categoria ?></td>
-      <td><?php echo $c->descripcion_categoria ?></td>
-      <td><a href="showProductsByCatgory/<?php echo $c->id_categoria?>">click para ver mas</a>
-       <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre de la categoria</th>
+      <th scope="col">Descripcion de la categoria</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
-    <?php endforeach?>
+  </thead>
+  <tbody>
+    <?php foreach ($category as $c): ?>
+      <tr>
+        <th scope="row"><?php echo $c->id_categoria ?></th>
+        <td><?php echo $c->nombre_categoria ?></td>
+        <td><?php echo $c->descripcion_categoria ?></td>
+        <td><a href="showProductsByCatgory/<?php echo $c->id_categoria ?>">click para ver mas</a>
+        <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
+        <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Update</a></td>
+      </tr>
+    <?php endforeach ?>
   </tbody>
 </table>
 <form action="insertCategory" method="post">
-    <label for="">Nombre de la categoria</label>
-    <input type="text" name="nombre_categoria" required>
-    <label for="">Descripción de la categoria</label>
-    <input type="text" name="descripcion_categoria" required>
-    <button type="submit">Insertar</button>
+  <label for="">Nombre de la categoria</label>
+  <input type="text" name="nombre_categoria" required>
+  <label for="">Descripción de la categoria</label>
+  <input type="text" name="descripcion_categoria" required>
+  <button type="submit">Insertar</button>
 </form>
 <?php require_once 'footer.phtml' ?>

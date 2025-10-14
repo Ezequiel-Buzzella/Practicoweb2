@@ -1,0 +1,8 @@
+<?php require_once 'header.phtml' ?>
+<form action="<?=BASE_URL?>updateCategory" method="post">
+    <input type="hidden" name="id_categoria" value="<?= $category->id_categoria ?>">
+    <label for="">Nombre de la categoria</label><input type="text" name="nombre_categoria" value="<?= $category->nombre_categoria ?>">
+    <label for="">Descripcion de la categoria</label><input type="text" name="descripcion_categoria" value="<?= $category->descripcion_categoria?>">
+    <input type="submit" value="Actualizar">
+</form>
+<?php require_once 'footer.phtml'?>
