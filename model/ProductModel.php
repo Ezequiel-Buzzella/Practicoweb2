@@ -27,6 +27,30 @@ class ProductModel extends BaseModel
                                  ON p.fk_id_categoria = c.id_categoria
                                  WHERE c.id_categoria = ?");
     $query->execute([$fk_id_categoria]);
-    return $query->fetchAll(PDO::FETCH_OBJ);  
+    return $query->fetchAll(PDO::FETCH_OBJ);
+  }
+
+function updateProduct($id_producto, $nombre_producto, $descripcion_producto, $precio_producto, $fk_id_categoria)
+{
+    $query = $this->db->prepare("UPDATE producto 
+        SET nombre_producto = ?, 
+            descripcion_producto = ?, 
+            precio_producto = ?, 
+            fk_id_categoria = ? 
+        WHERE id_producto = ?");
+    $query->execute([$nombre_producto, $descripcion_producto, $precio_producto, $fk_id_categoria, $id_producto]);
+}
+
+function getProductById($id_producto)
+{
+    $query = $this->db->prepare("SELECT * FROM producto WHERE id_producto = ?");
+    $query->execute([$id_producto]);
+    return $query->fetch(PDO::FETCH_OBJ);
+}
+
+  function deleteProduct($id_producto)
+  {
+    $query = $this->db->prepare("DELETE FROM producto WHERE id_producto=?");
+    $query->execute([$id_producto]);
   }
 }

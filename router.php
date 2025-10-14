@@ -1,6 +1,7 @@
 <?php
 require_once './controller/ProductController.php';
 require_once './controller/CategoryController.php';
+require_once './view/index.php';
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 
@@ -14,20 +15,21 @@ if (!empty($_GET['action'])) {
 
 $params = explode('/', $action);
 
+$index = new index();
 $productController = new ProductController();
 $categoryController = new CategoryController();
 
 
 switch ($params[0]) {
   case 'home':
-    $productController->home();
+    $index->showHome();
     break;
   case 'showCategories':
     $categoryController->showCategories();
     break;
 
   case 'showProducts':
-    $categories=$categoryController->getCategories();
+    $categories = $categoryController->getCategories();
     $productController->showProducts($categories);
     break;
 
@@ -36,6 +38,30 @@ switch ($params[0]) {
     break;
   case 'insertProduct':
     $productController->insertProduct();
+    break;
+  case 'insertCategory':
+    $categoryController->insertCategory();
+    break;
+  case 'deleteProduct':
+    $productController->deleteProduct($params[1]);
+    break;
+
+  case 'deleteCategory':
+    $categoryController->deleteCategory($params[1]);
+    break;
+
+  case 'editProduct':
+    $categories = $categoryController->getCategories();
+    $productController->editProduct($params[1], $categories);
+    break;
+
+
+  case 'updateProduct':
+    $productController->updateProduct();
+    break;
+
+  case 'updateCategory':
+
     break;
 
   default:
