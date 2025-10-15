@@ -5,7 +5,8 @@
       <th scope="col">Id</th>
       <th scope="col">Nombre de la categoria</th>
       <th scope="col">Descripcion de la categoria</th>
-      <th></th>
+      <th>Imagen</th>
+      <th>Mas detalles</th>
       <th></th>
       <th></th>
     </tr>
@@ -16,7 +17,12 @@
         <th scope="row"><?php echo $c->id_categoria ?></th>
         <td><?php echo $c->nombre_categoria ?></td>
         <td><?php echo $c->descripcion_categoria ?></td>
-        <td><a href="showProductsByCatgory/<?php echo $c->id_categoria ?>">click para ver mas</a>
+        <?php if (!empty($c->imagen_categoria)): ?>
+          <td><img src="<?= $c->imagen_categoria ?>" alt="Imagen" width="80"></td>
+        <?php else: ?>
+          <td>Sin imagen</td>
+        <?php endif; ?>
+        <td><a href="howProductsByCatgory/<?php echo $c->id_categoria ?>">click para ver mas</a>
         <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
         <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Update</a></td>
       </tr>
@@ -28,6 +34,8 @@
   <input type="text" name="nombre_categoria" required>
   <label for="">Descripción de la categoria</label>
   <input type="text" name="descripcion_categoria" required>
+  <label for="">URL de la imagen</label>
+  <input type="url" name="imagen_categoria">
   <button type="submit">Insertar</button>
 </form>
 <?php require_once 'footer.phtml' ?>

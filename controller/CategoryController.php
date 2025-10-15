@@ -26,7 +26,8 @@ class CategoryController
     function insertCategory(){
         $name = $_POST['nombre_categoria'];
         $description = $_POST['descripcion_categoria'];
-        $this->model->insertCategory($name,$description);
+        $image = $_POST['imagen_categoria'];
+        $this->model->insertCategory($name,$description,$image);
         $this->index->showHome();
     }
 

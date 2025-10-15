@@ -2,6 +2,7 @@
 require_once './controller/ProductController.php';
 require_once './controller/CategoryController.php';
 require_once './view/index.php';
+require_once './controller/UserController.php';
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 
@@ -18,12 +19,13 @@ $params = explode('/', $action);
 $index = new index();
 $productController = new ProductController();
 $categoryController = new CategoryController();
-
+$userController = new UserController();
 
 switch ($params[0]) {
   case 'home':
     $index->showHome();
     break;
+
   case 'showCategories':
     $categoryController->showCategories();
     break;
@@ -55,7 +57,6 @@ switch ($params[0]) {
     $productController->editProduct($params[1], $categories);
     break;
 
-
   case 'updateProduct':
     $productController->updateProduct();
     break;
@@ -68,7 +69,6 @@ switch ($params[0]) {
     break;
 
   default:
-    var_dump($params);
     echo 'error';
     break;
 }

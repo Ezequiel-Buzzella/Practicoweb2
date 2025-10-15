@@ -18,10 +18,10 @@ class CategoryModel extends BaseModel
     return $id_category;
   }
 
-  function insertCategory($nombre_categoria,$descripcion_categoria){
-    $query = $this->db->prepare('INSERT INTO categoria(nombre_categoria,descripcion_categoria)
-    VALUES (?,?)');
-    $query->execute([$nombre_categoria,$descripcion_categoria]);
+  function insertCategory($nombre_categoria,$descripcion_categoria,$imagen_categoria){
+    $query = $this->db->prepare('INSERT INTO categoria(nombre_categoria,descripcion_categoria,imagen_categoria)
+    VALUES (?,?,?)');
+    $query->execute([$nombre_categoria,$descripcion_categoria,$imagen_categoria]);
 
   }
 
