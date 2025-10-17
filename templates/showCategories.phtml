@@ -1,12 +1,12 @@
-<?php require_once 'header.phtml' ?>
+<?php require_once 'header.phtml'; ?>
+
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nombre de la categoria</th>
-      <th scope="col">Descripcion de la categoria</th>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
       <th>Imagen</th>
-      <th>Mas detalles</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,28 +14,32 @@
   <tbody>
     <?php foreach ($category as $c): ?>
       <tr>
-        <th scope="row"><?php echo $c->id_categoria ?></th>
-        <td><?php echo $c->nombre_categoria ?></td>
-        <td><?php echo $c->descripcion_categoria ?></td>
-        <?php if (!empty($c->imagen_categoria)): ?>
-          <td><img src="<?= $c->imagen_categoria ?>" alt="Imagen" width="80"></td>
-        <?php else: ?>
-          <td>Sin imagen</td>
-        <?php endif; ?>
-        <td><a href="howProductsByCatgory/<?php echo $c->id_categoria ?>">click para ver mas</a>
+        <td><?= $c->id_categoria ?></td>
+        <td><?= $c->nombre_categoria ?></td>
+        <td><?= $c->descripcion_categoria ?></td>
+        <td>
+          <?php if (!empty($c->imagen_categoria)): ?>
+            <img src="<?= $c->imagen_categoria ?>" alt="Imagen" width="80">
+          <?php else: ?>
+            Sin imagen
+          <?php endif; ?>
+        </td>
+        <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Editar</a></td>
         <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
-        <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Update</a></td>
       </tr>
-    <?php endforeach ?>
+    <?php endforeach; ?>
   </tbody>
 </table>
+
+<h3>Agregar categoría</h3>
 <form action="insertCategory" method="post">
-  <label for="">Nombre de la categoria</label>
+  <label>Nombre</label>
   <input type="text" name="nombre_categoria" required>
-  <label for="">Descripción de la categoria</label>
+  <label>Descripción</label>
   <input type="text" name="descripcion_categoria" required>
-  <label for="">URL de la imagen</label>
+  <label>URL Imagen</label>
   <input type="url" name="imagen_categoria">
-  <button type="submit">Insertar</button>
+  <button type="submit">Agregar</button>
 </form>
-<?php require_once 'footer.phtml' ?>
+
+<?php require_once 'footer.phtml'; ?>

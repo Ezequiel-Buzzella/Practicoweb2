@@ -2,12 +2,16 @@
 require_once './model/ProductModel.php';
 require_once './view/ProductView.php';
 require_once './view/index.php';
+require_once './helper/AuthHelper.php';
+
+
 
 class ProductController
 {
     private $model;
     private $view;
     private $index;
+    private $helper;
 
 
     public function __construct()
@@ -15,16 +19,19 @@ class ProductController
         $this->model = new ProductModel();
         $this->view = new ProductView();
         $this->index = new index();
+        $this->helper = new AuthHelper();
     }
 
     function showProducts($categories = [])
     {
+        $this->helper->checkLogin();
         $products = $this->model->showAll();
         $this->view->showProducts($products, $categories);
     }
 
     function insertProduct()
     {
+        $this->helper->checkLogin();
         $nombre_producto = $_POST["nombre_producto"];
         $descripcion_producto = $_POST["descripcion_producto"];
         $precio_producto = $_POST["precio_producto"];
@@ -35,24 +42,27 @@ class ProductController
 
     function showProductsByCategory($id_categoria)
     {
+        $this->helper->checkLogin();
         $products = $this->model->showProductsByCategory($id_categoria);
         $this->view->showProductsByCategory($products);
     }
 
     function deleteProduct($id_producto)
     {
+        $this->helper->checkLogin();
         $this->model->deleteProduct($id_producto);
         header("Location: " . BASE_URL . "showProducts");
     }
 
     function editProduct($id_producto, $categories = [])
     {
-
+        $this->helper->checkLogin();
         $product = $this->model->getProductById($id_producto);
         $this->view->showEditProduct($product, $categories);
     }
     function updateProduct()
     {
+        $this->helper->checkLogin();
         $id_producto = $_POST['id_producto'];
         $nombre_producto = $_POST['nombre_producto'];
         $descripcion_producto = $_POST['descripcion_producto'];

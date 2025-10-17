@@ -23,4 +23,6 @@ class ProductView
         $category = $categories;
         require 'templates/editProduct.phtml';
     }
+
+
 }

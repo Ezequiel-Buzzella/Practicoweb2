@@ -2,9 +2,9 @@
 require_once 'BaseModel.php';
 class UserModel extends BaseModel
 {
-        function getUserById(){
+        function getUserByEmail($email){
             $query = $this->db->prepare("SELECT * FROM usuario WHERE email = ?");
-            $query->execute();
+            $query->execute([$email]);
             $user = $query->fetch(PDO::FETCH_OBJ);
             return $user;
         } 

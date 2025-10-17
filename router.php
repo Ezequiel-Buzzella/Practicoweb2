@@ -57,16 +57,31 @@ switch ($params[0]) {
     $productController->editProduct($params[1], $categories);
     break;
 
+  case 'editCategory':
+    $categoryController->editCategory($params[1]);
+    break;
+
+  case 'updateCategory':
+    $categoryController->updateCategory();
+    break;
+
+  case 'register':
+    $userController->register();
+    break;
+
+  case 'login':
+    $userController->login();
+    break;
+
+  case 'logout':
+    $userController->logout();
+    break;
+    
   case 'updateProduct':
     $productController->updateProduct();
     break;
 
-  case 'editCategory':
-    $categoryController->editCategory($params[1]);
-    break;
-  case 'updateCategory':
-    $categoryController->updateCategory();
-    break;
+
 
   default:
     echo 'error';

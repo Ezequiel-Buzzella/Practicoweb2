@@ -1,8 +1,12 @@
 <?php
 
-final class index 
+final class index
 {
-    function showHome(){
-        require_once ('./templates/home.phtml');
+    public function __construct()
+    {
+    }
+    function showHome()
+    {
+        require_once('./templates/home.phtml');
     }
 }
