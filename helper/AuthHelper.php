@@ -1,15 +1,25 @@
 <?php
-
 final class AuthHelper
 {
-    function checkLogin()
+    private function ensureSessionStarted()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        if (!isset($_SESSION["logueado"]) || $_SESSION["logueado"] !== true) {
+    }
+
+    function checkLogin()
+    {
+        $this->ensureSessionStarted();
+        if (!isset($_SESSION["email"])) {
             header('Location:' . BASE_URL . 'login');
             exit;
         }
+    }
+
+    function isLoggedIn()
+    {
+        $this->ensureSessionStarted();
+        return isset($_SESSION["email"]);
     }
 }

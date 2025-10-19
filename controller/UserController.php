@@ -24,27 +24,33 @@ class UserController
         return null;
     }
 
-    function register()
-    {
-        $error = null;
+function register()
+{
+    $error = null;
+    $userCredentials = $this->getUserCredentials();
 
+    if ($userCredentials) {
+        $email = $userCredentials['email'];
+        $password = password_hash($userCredentials['password'], PASSWORD_BCRYPT);
 
-        $userCredentials = $this->getUserCredentials();
-
-        if ($userCredentials) {
-            $email = $userCredentials['email'];
-            $password = password_hash($userCredentials['password'], PASSWORD_BCRYPT);
-
-            $this->model->saveUser($email, $password);
-
-            header('Location:' . BASE_URL . 'home');
-            exit;
-        } elseif (!empty($_POST)) {
-            $error = "Tenés que completar los datos";
+        if ($this->model->getUserByEmail($email)) {
+            $error = "El usuario ya existe";
+            $this->view->registerView($error);
+            return;
         }
 
-        $this->view->registerView($error);
+        $this->model->saveUser($email, $password);
+
+
+        header('Location:' . BASE_URL . 'login');
+        exit;
+    } elseif (!empty($_POST)) {
+        $error = "Tenés que completar los datos";
     }
+
+
+    $this->view->registerView($error);
+}
 
     function login()
     {
@@ -56,6 +62,7 @@ class UserController
         if ($userCredentials) {
             $user = $this->model->getUserByEmail($userCredentials['email']);
             if ($user && password_verify($userCredentials['password'], $user->password)) {
+                $_SESSION['email']= $user->email;
                 header('Location:' . BASE_URL . 'home');
                 exit;
             } else {
@@ -67,10 +74,18 @@ class UserController
 
         $this->view->loginView($error);
     }
+
     function logout()
     {
+        session_start();
         session_destroy();
         header('Location: ' . BASE_URL . 'login');
+    }
+
+    function guestLogin(){
+        $_SESSION['email'] = "guest@guest.com";
+
+        header('Location:'.BASE_URL.'home');
     }
 
 

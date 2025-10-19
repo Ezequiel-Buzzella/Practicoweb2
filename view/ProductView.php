@@ -24,5 +24,19 @@ class ProductView
         require 'templates/editProduct.phtml';
     }
 
+    function showPublicProducts($products,$categories){
+        $product = $products;
+        $category = $categories;
+        require_once './templates/showPublicProduct.phtml';
+
+    }
+
+    function showPublicProductsByCategory($products,$categoires){
+        $product = $products;
+        $category = $categoires;
+        require_once ' ./templates/showPublicProductsByCategory.phtml';
+
+    }
+
 
 }

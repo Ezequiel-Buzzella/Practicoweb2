@@ -76,12 +76,26 @@ switch ($params[0]) {
   case 'logout':
     $userController->logout();
     break;
-    
+
   case 'updateProduct':
     $productController->updateProduct();
     break;
 
+  case 'publicCategories':
+    $categoryController->showPublicCategories();
+    break;
 
+  case 'publicProducts':
+    $categories = $categoryController->getPublicCategories();
+    $productController->showPublicProducts($categories);
+    break;
+
+  case 'publicProductsByCategory':
+    $productController->showPublicProductsByCategory($params[1]);
+    break;
+  case 'guest':
+    $userController->guestLogin();
+    break;
 
   default:
     echo 'error';

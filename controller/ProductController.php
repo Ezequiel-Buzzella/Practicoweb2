@@ -73,4 +73,15 @@ class ProductController
 
         header('Location: ' . BASE_URL . 'showProducts');
     }
+
+    function showPublicProducts($categories = [])
+    {   $products=$this->model->showAll();
+        $this->view->showPublicProducts($products, $categories);
+    }
+
+    function showPublicProductsByCategory($id_categoria)
+    {
+        $products = $this->model->showProductsByCategory($id_categoria);
+        $this->view->showProductsByCategory($products);
+    }
 }

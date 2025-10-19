@@ -1,0 +1,39 @@
+<?php require_once 'header.phtml' ?>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Descripcion del producto</th>
+            <th scope="col">Precio del producto</th>
+            <th>Categoria</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($product as $p): ?>
+            <tr>
+                <th scope="row"><?php echo $p->id_producto ?></th>
+                <td><?php echo $p->nombre_producto ?></td>
+                <td><?php echo $p->descripcion_producto ?></td>
+                <td><?php echo $p->precio_producto ?></td>
+                <td>
+                    <?php
+                    foreach ($category as $c) {
+                        if ($c->id_categoria == $p->fk_id_categoria) {
+                            echo $c->nombre_categoria;
+                        }
+                    }
+                    ?>
+                </td>
+
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+
+
+<?php require_once 'footer.phtml' ?>

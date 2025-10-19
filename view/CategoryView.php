@@ -13,6 +13,11 @@ class CategoryView {
 
     }
 
+    function showPublicCategories($categories){
+        $category = $categories;
+        require_once './templates/showPublicCategory.phtml';
+    }
+
 
 
 }

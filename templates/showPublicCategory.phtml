@@ -24,23 +24,8 @@
             Sin imagen
           <?php endif; ?>
         </td>
-        <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Editar</a></td>
-        <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
       </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-
-<h3>Agregar categoría</h3>
-<?php require_once './helper/AuthHelper.php'?>
-<form action="insertCategory" method="post">
-  <label>Nombre</label>
-  <input type="text" name="nombre_categoria" required>
-  <label>Descripción</label>
-  <input type="text" name="descripcion_categoria" required>
-  <label>URL Imagen</label>
-  <input type="url" name="imagen_categoria">
-  <button type="submit">Agregar</button>
-</form>
-
-<?php require_once 'footer.phtml'; ?>
+<?php require_once './templates/footer.phtml' ?>

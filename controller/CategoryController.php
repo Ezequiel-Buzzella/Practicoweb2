@@ -25,6 +25,12 @@ class CategoryController
         return $this->model->showAll();
     }
 
+        function getPublicCategories()
+    {
+        return $this->model->showAll();
+    }
+
+
     function showCategories()
     {
         $this->helper->checkLogin();
@@ -62,5 +68,11 @@ class CategoryController
         $category_description = $_POST['descripcion_categoria'];
         $this->model->updateCategory($id_category, $category_name, $category_description);
         header('Location: ' . BASE_URL . 'showCategories');
+    }
+
+
+    public function showPublicCategories(){
+        $categories = $this->model->showAll();
+        $this->view->showPublicCategories($categories);
     }
 }
