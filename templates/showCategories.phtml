@@ -26,7 +26,7 @@
         </td>
         <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Editar</a></td>
         <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
-        <td><a href="showProductsByCategory/<?= $c->id_categoria ?>" class="btn btn-primary">Ver más</a></td>
+        <td><a href="<?= BASE_URL ?>showProductsByCategory/<?= $c->id_categoria ?>" class="btn btn-primary">Ver más</a></td>
       </tr>
     <?php endforeach; ?>
   </tbody>

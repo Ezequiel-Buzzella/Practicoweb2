@@ -35,7 +35,7 @@ switch ($params[0]) {
     $productController->showProducts($categories);
     break;
 
-  case 'showProductsByCatgory':
+  case 'showProductsByCategory':
     $productController->showProductsByCategory($params[1]);
     break;
   case 'insertProduct':
