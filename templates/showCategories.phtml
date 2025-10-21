@@ -26,13 +26,14 @@
         </td>
         <td><a href="editCategory/<?= $c->id_categoria ?>" class="btn btn-secondary">Editar</a></td>
         <td><a href="deleteCategory/<?= $c->id_categoria ?>" class="btn btn-danger">Eliminar</a></td>
+        <td><a href="showProductsByCategory/<?= $c->id_categoria ?>" class="btn btn-primary">Ver más</a></td>
       </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
 
 <h3>Agregar categoría</h3>
-<?php require_once './helper/AuthHelper.php'?>
+<?php require_once './helper/AuthHelper.php' ?>
 <form action="insertCategory" method="post">
   <label>Nombre</label>
   <input type="text" name="nombre_categoria" required>
